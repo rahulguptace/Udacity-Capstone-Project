@@ -1,1 +1,22 @@
-<paste log output from Kubernetes-mediated prediction, here>
+From main Terminal
+
+.devops) voclabs:~/environment/DevOps_Microservices/project-ml-microservice-kubernetes (master) $ sh ./run_kubernetes.sh
+Error from server (AlreadyExists): pods "ml-ms-project-pod" already exists
+NAME                READY   STATUS    RESTARTS   AGE
+ml-ms-project-pod   1/1     Running   0          18m
+Forwarding from 127.0.0.1:8081 -> 5000
+Forwarding from [::1]:8081 -> 5000
+Handling connection for 8081
+Handling connection for 8081
+Handling connection for 8081
+Handling connection for 8081
+
+From Other terminal
+
+voclabs:~/environment/DevOps_Microservices/project-ml-microservice-kubernetes (master) $ sudo sh make_prediction.sh
+Port: 8081
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
