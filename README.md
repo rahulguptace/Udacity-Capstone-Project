@@ -1,4 +1,4 @@
-<include a CircleCI status badge, here>
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/rahulguptace/project-ml-microservice-kubernetes/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/rahulguptace/project-ml-microservice-kubernetes/tree/main)
 
 ## Project Overview
 
@@ -23,19 +23,19 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 
 Install required software
 
-Install hadolint using belo commands (LINUX)
+a. Install hadolint using belo commands (LINUX)
 
 wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.10.0/hadolint-Linux-x86_64
 
 chmod +x /bin/hadolint
 
-Install Minikube (LINUX)
+b. Install Minikube (LINUX)
 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
-Install Kubectl
+c. Install Kubectl
 
 Follow Instructions in the below link
 
@@ -46,7 +46,7 @@ Step 0
 Fork this repo and clone it to your local workstation
 
 Step 1: Install dependencies
-Set up the environment by running the command
+a. Set up the environment by running the command
 make setup 
 
 This will create a virtual environment in your home directory called .devops
@@ -54,10 +54,10 @@ This will create a virtual environment in your home directory called .devops
 Note - You will still have to activate it using the command
 source ~/.devops/bin/activate
 
-Install dependencies by running the command
+b. Install dependencies by running the command
 make install
 
-Lint application (requires hadolint) using below command
+c. Lint application (requires hadolint) using below command
 make lint
 
 Step 2: Run Docker container
@@ -77,3 +77,8 @@ Verify the outputs by running the make predictions shell script in a different t
 ./make_prediction.sh
 
 GitHub Link
+HTTPS
+https://github.com/rahulguptace/project-ml-microservice-kubernetes.git
+
+SSH
+git@github.com:rahulguptace/project-ml-microservice-kubernetes.git
