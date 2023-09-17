@@ -46,39 +46,48 @@ Step 0
 Fork this repo and clone it to your local workstation
 
 Step 1: Install dependencies
+
 a. Set up the environment by running the command
+
 make setup 
 
 This will create a virtual environment in your home directory called .devops
 
 Note - You will still have to activate it using the command
+
 source ~/.devops/bin/activate
 
 b. Install dependencies by running the command
+
 make install
 
 c. Lint application (requires hadolint) using below command
+
 make lint
 
 Step 2: Run Docker container
 Run the application on docker by calling 
+
 ./run_docker.sh
 
 Step 3: Upload to Docker Hub
 In the ./upload_docker.sh file, edit the dockerpath (line 8) and change the docker username to a personalized one
 To upload to docker hub, run 
+
 ./upload_docker.sh
 
 Step 4: Kubernetes deployment
 To deploy to kubernetes, run 
+
 ./run_kubernetes.sh
 
 Verify the outputs by running the make predictions shell script in a different terminal
+
 ./make_prediction.sh
 
 GitHub Link
-HTTPS
+HTTPS - 
 https://github.com/rahulguptace/project-ml-microservice-kubernetes.git
 
-SSH
+SSH - 
 git@github.com:rahulguptace/project-ml-microservice-kubernetes.git
