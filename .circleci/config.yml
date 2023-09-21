@@ -60,7 +60,9 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           echo 'Login successful'
 
-          docker push $dockerpath
+          echo 'Docker Path: ' $dockerpath
+          echo 'Image Tag: ' $imgtag
+          docker push $imgtag
           echo 'Push successful'
 
 workflows:
