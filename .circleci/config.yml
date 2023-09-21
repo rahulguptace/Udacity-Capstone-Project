@@ -36,38 +36,37 @@ jobs:
             . capstone/bin/activate
             make lint
 
-    build-push-image:
-      docker:
-        # Use the same Docker base as the project
-        - image: python:3.7.3-stretch
-      working_directory: ~/repo
-      steps:
-      - checkout
-      - run:
-          name: Build & Tag Image
-          command: |
-            imgtag=$IMAGE_TAG
-            dockerpath=$DOCKER_PATH
+  build-push-image:
+    docker:
+      - image: python:3.7.3-stretch
+    working_directory: ~/repo
+    steps:
+    - checkout
+    - run:
+        name: Build & Tag Image
+        command: |
+          imgtag=$IMAGE_TAG
+          dockerpath=$DOCKER_PATH
 
-            docker build -t $imgtag .
-            echo 'The existing docker images:'
-            docker images
+          docker build -t $imgtag .
+          echo 'The existing docker images:'
+          docker images
 
-            docker tag $imgtag $dockerpath
+          docker tag $imgtag $dockerpath
 
-      - run:
-          name: Push Image to Docker Hub
-          command: |
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            echo 'Login successful'
+    - run:
+        name: Push Image to Docker Hub
+        command: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          echo 'Login successful'
 
-            docker push $dockerpath
-            echo 'Push successful'
+          docker push $dockerpath
+          echo 'Push successful'
 
 workflows:
-    default:
-      jobs:
-         - build
-         - build-push-image:
-              requires: 
-                - build          
+  default:
+    jobs:
+      - build
+      - build-push-image:
+          requires: 
+            - build          
