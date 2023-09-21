@@ -62,7 +62,7 @@ jobs:
 
           echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin
 
-          docker push $imgtag
+          docker push $dockerpath
           echo 'Push successful'
 
 workflows:
