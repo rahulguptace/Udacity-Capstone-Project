@@ -57,16 +57,11 @@ jobs:
     - run:
         name: Push Image to Docker Hub
         command: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-          echo 'Login successful'
-          
+          echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin
+
           imgtag=$IMAGE_TAG
           dockerpath=$DOCKER_PATH
 
-          echo 'Docker Path: ' $dockerpath
-          echo $dockerpath
-          echo 'Image Tag: ' $imgtag
-          echo $imgtag
           docker push $imgtag
           echo 'Push successful'
 
