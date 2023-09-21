@@ -43,7 +43,7 @@ jobs:
     steps:
     - checkout
     - run:
-        name: Build & Tag Image
+        name: Build Image
         command: |
           imgtag=$IMAGE_TAG
           dockerpath=$DOCKER_PATH
@@ -52,15 +52,15 @@ jobs:
           echo 'The existing docker images:'
           docker images
 
-          docker tag $imgtag $dockerpath
-
     - run:
-        name: Push Image to Docker Hub
+        name: Tag & Push Image
         command: |
-          echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin
-
           imgtag=$IMAGE_TAG
           dockerpath=$DOCKER_PATH
+
+          docker tag $imgtag $dockerpath
+
+          echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin
 
           docker push $imgtag
           echo 'Push successful'
