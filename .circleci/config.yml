@@ -59,9 +59,14 @@ jobs:
         command: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           echo 'Login successful'
+          
+          imgtag=$IMAGE_TAG
+          dockerpath=$DOCKER_PATH
 
           echo 'Docker Path: ' $dockerpath
+          echo $dockerpath
           echo 'Image Tag: ' $imgtag
+          echo $imgtag
           docker push $imgtag
           echo 'Push successful'
 
