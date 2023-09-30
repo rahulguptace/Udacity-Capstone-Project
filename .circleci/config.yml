@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  kubernetes: circleci/kubernetes@1.3
+
 jobs:
   build:
     docker:
@@ -15,6 +18,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      # run install
       - run:
           name: install dependencies
           command: |
@@ -30,7 +34,7 @@ jobs:
             - ./capstone
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
-       # run lint!
+       # run lint
       - run:
           name: run lint
           command: |
@@ -65,10 +69,25 @@ jobs:
           docker push $dockerpath
           echo 'Push successful'
 
+  deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+    - checkout
+    - kubernetes/install-kubectl
+    - kubernetes/create-or-update-resource:
+        get-rollout-status: true
+        resource-file-path: manifests\kustomization.yaml
+        resource-name: manifests\kustomization.yaml
+        show-kubectl-command: true
+
 workflows:
   default:
     jobs:
       - build
       - build-push-image:
           requires: 
-            - build          
+            - build     
+      - deploy:
+          requires: 
+            - build-push-image     
