@@ -79,6 +79,7 @@ jobs:
           Name of the EKS cluster
         type: string
     steps:
+    - checkout
     - kubernetes/install
     - aws-eks/update-kubeconfig-with-authenticator:
         cluster-name: << parameters.cluster-name >>
@@ -88,9 +89,9 @@ jobs:
           kubectl get nodes
           kubectl get deploy,rs,svc,pods
     - kubernetes/create-or-update-resource:
+        resource-file-path: manifests\kustomization.yaml        
+        resource-name: deployment\<<parameters.cluster-name>>
         get-rollout-status: true
-        resource-file-path: manifests/kustomization.yaml
-        resource-name: deployment/<<parameters.cluster-name>>
         show-kubectl-command: true
 
 workflows:
