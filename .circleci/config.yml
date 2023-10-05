@@ -103,6 +103,8 @@ jobs:
         resource-name: services/capstone
         get-rollout-status: true
         show-kubectl-command: true
+        watch-rollout-status: true
+        watch-timeout: 5m
 
 workflows:
   default:
