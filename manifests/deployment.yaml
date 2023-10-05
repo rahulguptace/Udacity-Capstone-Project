@@ -18,8 +18,8 @@ spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
-        - name: nodejs-aks-app
-          image: nodejs-aks-app
+        - name: udacity-capstone-project
+          image: rahulguptace/udacity-capstone-project
           ports:
             - name: http
               containerPort: 5000

@@ -6,6 +6,6 @@ resources:
   - namespace.yaml
 namespace: capstone
 images:
-  - name: nodejs-aks-app
-    newName: nodejs-aks-app
+  - name: udacity-capstone-project
+    newName: udacity-capstone-project
     newTag: v1
