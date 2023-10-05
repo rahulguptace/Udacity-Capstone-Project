@@ -90,7 +90,7 @@ jobs:
         get-rollout-status: true
         show-kubectl-command: true
         watch-rollout-status: true
-        watch-timeout: 0
+        watch-timeout: 5m
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/deployment.yaml        
         resource-name: deployment/capstone
