@@ -104,7 +104,7 @@ jobs:
         show-kubectl-command: true
     - run:
         command: |
-          kubectl port-forward service/capstone 80:5000
+          kubectl port-forward service/kubernetes 80:5000
 
 workflows:
   default:
