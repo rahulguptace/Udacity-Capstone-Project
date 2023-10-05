@@ -89,25 +89,25 @@ jobs:
           kubectl get deploy,rs,svc,pods
     - kubernetes/create-or-update-resource:
         get-rollout-status: true
-        resource-file-path: manifests\kustomization.yaml
-        resource-name: deployment\<<parameters.cluster-name>>
+        resource-file-path: manifests/kustomization.yaml
+        resource-name: deployment/<<parameters.cluster-name>>
         show-kubectl-command: true
 
 workflows:
   default:
     jobs:
-      - build
-      - build-push-image:
-          requires: 
-            - build   
-      - aws-eks/create-cluster:  
-          cluster-name: $IMAGE_TAG
-          requires: 
-            - build-push-image
+      # - build
+      # - build-push-image:
+      #     requires: 
+      #       - build   
+      # - aws-eks/create-cluster:  
+      #     cluster-name: $IMAGE_TAG
+      #     requires: 
+      #       - build-push-image
       - deploy-cluster:
           cluster-name: $IMAGE_TAG
-          requires:
-            - aws-eks/create-cluster
+          # requires:
+          #   - aws-eks/create-cluster
       # - aws-eks/delete-cluster:
       #     cluster-name: $IMAGE_TAG-cluster
       #     requires:
