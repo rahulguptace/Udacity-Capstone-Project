@@ -86,12 +86,12 @@ jobs:
         install-kubectl: true
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/namespace.yaml        
-        resource-name: namespace/<<parameters.cluster-name>>
+        resource-name: namespace/capstone
         get-rollout-status: true
         show-kubectl-command: true
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/deployment.yaml        
-        resource-name: deployment/<<parameters.cluster-name>>
+        resource-name: deployment/capstone
         get-rollout-status: true
         show-kubectl-command: true
     - run:
