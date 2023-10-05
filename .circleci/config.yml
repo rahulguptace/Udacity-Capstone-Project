@@ -91,6 +91,7 @@ jobs:
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/kustomization.yaml        
         resource-name: deployment/<<parameters.cluster-name>>
+        kustomize: true
         get-rollout-status: true
         show-kubectl-command: true
 
