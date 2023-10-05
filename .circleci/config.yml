@@ -120,14 +120,14 @@ workflows:
       #     cluster-name: $IMAGE_TAG
       #     requires: 
       #       - build-push-image
-      - deploy-cluster:
-          cluster-name: $IMAGE_TAG
+      # - deploy-cluster:
+      #     cluster-name: $IMAGE_TAG
           # requires:
           #   - aws-eks/create-cluster
-      # - aws-eks/delete-cluster:
-      #     cluster-name: $IMAGE_TAG-cluster
-      #     requires:
-      #       - test-cluster
+      - aws-eks/delete-cluster:
+          cluster-name: $IMAGE_TAG
+          # requires:
+          #   - test-cluster
       # - deploy:
       #     requires: 
       #       - test-cluster    
