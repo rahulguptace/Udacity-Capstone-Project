@@ -105,6 +105,9 @@ jobs:
     - run:
         command: |
           kubectl get svc -n capstone
+    - run:
+        command: |
+          kubectl port-forward capstone 8080:80
 
 workflows:
   default:
