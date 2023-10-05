@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: capstone
-  namespace: default
+  namespace: capstone
   labels:
     app: capstone
 spec:
@@ -16,7 +16,7 @@ spec:
         app: capstone
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": linux
+        "kubernetes.io/os": linux
       containers:
         - name: udacity-capstone-project
           image: rahulguptace/udacity-capstone-project

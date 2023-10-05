@@ -85,12 +85,18 @@ jobs:
         cluster-name: << parameters.cluster-name >>
         install-kubectl: true
     - kubernetes/create-or-update-resource:
+        resource-file-path: manifests/files/namespace.yaml        
+        resource-name: namespace/<<parameters.cluster-name>>
+        get-rollout-status: true
+        show-kubectl-command: true
+    - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/deployment.yaml        
         resource-name: deployment/<<parameters.cluster-name>>
         get-rollout-status: true
         show-kubectl-command: true
     - run:
         command: |
+          kubectl get deployment
           kubectl get nodes
           kubectl get deploy,rs,svc,pods
 
