@@ -104,7 +104,7 @@ jobs:
         show-kubectl-command: true
     - run:
         command: |
-          svc=kubectl get svc -n capstone
+          kubectl get svc -n capstone
 
 workflows:
   default:
