@@ -101,10 +101,10 @@ jobs:
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/services.yaml        
         resource-name: services/capstone
-        get-rollout-status: true
         show-kubectl-command: true
-        watch-rollout-status: true
-        watch-timeout: 5m
+    - run:
+        command: |
+          kubectl get svc
 
 workflows:
   default:
