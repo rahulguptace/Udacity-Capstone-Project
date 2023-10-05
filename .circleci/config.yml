@@ -89,8 +89,8 @@ jobs:
           kubectl get nodes
           kubectl get deploy,rs,svc,pods
     - kubernetes/create-or-update-resource:
-        resource-file-path: manifests\kustomization.yaml        
-        resource-name: deployment\<<parameters.cluster-name>>
+        resource-file-path: manifests/kustomization.yaml        
+        resource-name: deployment/<<parameters.cluster-name>>
         get-rollout-status: true
         show-kubectl-command: true
 
