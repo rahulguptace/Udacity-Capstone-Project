@@ -91,7 +91,6 @@ jobs:
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/deployment.yaml        
         resource-name: deployment/capstone
-        get-rollout-status: true
         show-kubectl-command: true  
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/services.yaml        
