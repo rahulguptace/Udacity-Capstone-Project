@@ -105,9 +105,8 @@ jobs:
         show-kubectl-command: true
     - run:
         command: |
-          kubectl get deployment
-          kubectl get nodes
-          kubectl get deploy,rs,svc,pods
+          kubectl get nodes -n capstone
+          kubectl get deploy,rs,svc,pods -n capstone
     # - run:
     #     command: |
     #       kubectl get svc -n capstone
