@@ -93,11 +93,6 @@ jobs:
         resource-name: deployment/capstone
         namespace: capstone
         show-kubectl-command: true
-    - run:
-        command: |
-          kubectl get deployment
-          kubectl get nodes
-          kubectl get deploy,rs,svc,pods  
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/services.yaml        
         resource-name: services/capstone
@@ -107,28 +102,22 @@ jobs:
         command: |
           kubectl get nodes -n capstone
           kubectl get deploy,rs,svc,pods -n capstone
-    # - run:
-    #     command: |
-    #       kubectl get svc -n capstone
-    # - run:
-    #     command: |
-    #       kubectl port-forward capstone 8080:80
 
 workflows:
   default:
     jobs:
-      # - build
-      # - build-push-image:
-      #     requires: 
-      #       - build   
-      # - aws-eks/create-cluster:  
-      #     cluster-name: $IMAGE_TAG
-      #     requires: 
-      #       - build-push-image
+      - build
+      - build-push-image:
+          requires: 
+            - build   
+      - aws-eks/create-cluster:  
+          cluster-name: $IMAGE_TAG
+          requires: 
+            - build-push-image
       - deploy-cluster:
           cluster-name: $IMAGE_TAG
-          # requires:
-          #   - aws-eks/create-cluster
+          requires:
+            - aws-eks/create-cluster
       # - aws-eks/delete-cluster:
       #     cluster-name: $IMAGE_TAG
           # requires:
