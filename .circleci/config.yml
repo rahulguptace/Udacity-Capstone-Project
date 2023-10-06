@@ -112,6 +112,7 @@ workflows:
             - build   
       - aws-eks/create-cluster:  
           cluster-name: $IMAGE_TAG
+          node-zones: us-east-1a,us-east-1b
           requires: 
             - build-push-image
       - deploy-cluster:
