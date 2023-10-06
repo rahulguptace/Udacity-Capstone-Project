@@ -42,4 +42,4 @@ Docker Hub Link:
 https://hub.docker.com/repository/docker/rahulguptace/udacity-capstone-project/general
 
 Load Balancer url:
-http://acb0042196d6848f5a557f9d026a21c9-728023912.us-east-1.elb.amazonaws.com/
+http://ad71e9f50dc904bd8a9073ada75ba9fa-809780235.us-east-1.elb.amazonaws.com/
