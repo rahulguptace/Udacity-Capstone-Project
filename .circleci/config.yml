@@ -92,6 +92,9 @@ jobs:
         resource-file-path: manifests/files/deployment.yaml        
         resource-name: deployment/capstone
         namespace: capstone
+        get-rollout-status: true
+        watch-rollout-status: true
+        watch-timeout: 5m
         show-kubectl-command: true
     - kubernetes/create-or-update-resource:
         resource-file-path: manifests/files/services.yaml        
@@ -106,7 +109,7 @@ jobs:
 workflows:
   default:
     jobs:
-      - build
+      # - build
       # - build-push-image:
       #     requires: 
       #       - build   
@@ -118,7 +121,7 @@ workflows:
       #     cluster-name: $IMAGE_TAG
       #     requires:
       #       - aws-eks/create-cluster
-      # - aws-eks/delete-cluster:
-      #     cluster-name: $IMAGE_TAG
+      - aws-eks/delete-cluster:
+          cluster-name: $IMAGE_TAG
       #     # requires:
           #   - test-cluster
