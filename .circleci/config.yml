@@ -109,19 +109,19 @@ jobs:
 workflows:
   default:
     jobs:
-      # - build
-      # - build-push-image:
-      #     requires: 
-      #       - build   
-      # - aws-eks/create-cluster:  
-      #     cluster-name: $IMAGE_TAG
-      #     requires: 
-      #       - build-push-image
-      # - deploy-cluster:
-      #     cluster-name: $IMAGE_TAG
-      #     requires:
-      #       - aws-eks/create-cluster
-      - aws-eks/delete-cluster:
+      - build
+      - build-push-image:
+          requires: 
+            - build   
+      - aws-eks/create-cluster:  
           cluster-name: $IMAGE_TAG
+          requires: 
+            - build-push-image
+      - deploy-cluster:
+          cluster-name: $IMAGE_TAG
+          requires:
+            - aws-eks/create-cluster
+      # - aws-eks/delete-cluster:
+      #     cluster-name: $IMAGE_TAG
       #     # requires:
           #   - test-cluster
